@@ -8,6 +8,8 @@ import javafx.scene.paint.Color;
 import eu.mihosoft.vrl.v3d.Transform;
 import com.neuronrobotics.bowlerstudio.physics.TransformFactory;
 
+ 
+
 return new ICadGenerator(){
 	HashMap<String , HashMap<String,ArrayList<CSG>>> map =  new HashMap<>();
 	HashMap<String,ArrayList<CSG>> bodyMap =  new HashMap<>();
@@ -137,6 +139,16 @@ return new ICadGenerator(){
 		
 		double servoTop = servoReference.getMaxZ()
 		CSG horn = Vitamins.get(conf.getShaftType(),conf.getShaftSize())	
+		CSG extraHorn = new Cylinder(20,20,5, (int)3).toCSG();
+		/**
+		CSG extraHorn = (CSG)ScriptingEngine
+					 .gitScriptRun(
+            "https://github.com/DataManiac18/BowlerStudioConfiguration/blob/master/Covered%20Figurine.groovy", // git location of the library
+            "Covered Figurine.groovy" , // file to load
+            null// no parameters (see next tutorial)
+            );
+            **/
+
 		
 		servoReference=servoReference
 			.movez(-servoTop)
@@ -154,6 +166,7 @@ return new ICadGenerator(){
 			}
 			
 		}
+		add(csg,moveDHValues(extraHorn,dh),dh.getListener())
 		add(csg,moveDHValues(horn,dh),dh.getListener())
 
 		if(neck ==sourceLimb ){
