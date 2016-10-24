@@ -1,11 +1,11 @@
 <root>
 <mobilebase>
 	<cadEngine>
-		<git>https://github.com/madhephaestus/laser-cut-robot.git</git>
+		<git>https://github.com/DataManiac18/laser-cut-robot.git</git>
 		<file>laserCutCad.groovy</file>
 	</cadEngine>
 	<driveEngine>
-		<git>https://gist.github.com/375b47a8e071608688a1.git</git>
+		<git>https://gist.github.com/DataManiac18/823851453cc60fbf66c9896fd54a2868</git>
 		<file>Walking.groovy</file>
 	</driveEngine>
 
@@ -14,11 +14,11 @@
 
 <name>DefaultLeg</name>
 	<cadEngine>
-		<git>https://github.com/madhephaestus/laser-cut-robot.git</git>
+		<git>https://github.com/DataManiac18/laser-cut-robot.git</git>
 		<file>feetCad.groovy</file>
 	</cadEngine>
 	<kinematics>
-		<git>https://gist.github.com/375b47a8e071608688a1.git</git>
+		<git>https://gist.github.com/DataManiac18/823851453cc60fbf66c9896fd54a2868</git>
 		<file>DH-Solver.groovy</file>
 	</kinematics>
 <link>
@@ -38,14 +38,14 @@
 	<homingTPS>10000000</homingTPS>
 	<vitamins>
 	<vitamin>
-	<name>electroMechanical</name>
-	<type>hobbyServo</type>
-	<id>hv6214mg</id>
+		<name>electroMechanical</name>
+		<type>hobbyServo</type>
+		<id>hv6214mg</id>
 	</vitamin>
 	<vitamin>
-	<name>shaft</name>
-	<type>hobbyServoHorn</type>
-	<id>standard4</id>
+		<name>shaft</name>
+		<type>hobbyServoHorn</type>
+		<id>standard4</id>
 	</vitamin>
 
 </vitamins>
@@ -206,11 +206,11 @@
 
 <name>DefaultLeg2</name>
 	<cadEngine>
-		<git>https://github.com/madhephaestus/laser-cut-robot.git</git>
+		<git>https://github.com/DataManiac18/laser-cut-robot.git</git>
 		<file>feetCad.groovy</file>
 	</cadEngine>
 	<kinematics>
-		<git>https://gist.github.com/375b47a8e071608688a1.git</git>
+		<git>https://gist.github.com/DataManiac18/823851453cc60fbf66c9896fd54a2868</git>
 		<file>DH-Solver.groovy</file>
 	</kinematics>
 <link>
@@ -398,11 +398,11 @@
 
 <name>DefaultLeg3</name>
 	<cadEngine>
-		<git>https://github.com/madhephaestus/laser-cut-robot.git</git>
+		<git>https://github.com/DataManiac18/laser-cut-robot.git</git>
 		<file>feetCad.groovy</file>
 	</cadEngine>
 	<kinematics>
-		<git>https://gist.github.com/375b47a8e071608688a1.git</git>
+		<git>https://gist.github.com/DataManiac18/823851453cc60fbf66c9896fd54a2868</git>
 		<file>DH-Solver.groovy</file>
 	</kinematics>
 <link>
@@ -590,11 +590,11 @@
 
 <name>DefaultLeg4</name>
 	<cadEngine>
-		<git>https://github.com/madhephaestus/laser-cut-robot.git</git>
+		<git>https://github.com/DataManiac18/laser-cut-robot.git</git>
 		<file>feetCad.groovy</file>
 	</cadEngine>
 	<kinematics>
-		<git>https://gist.github.com/375b47a8e071608688a1.git</git>
+		<git>https://gist.github.com/DataManiac18/823851453cc60fbf66c9896fd54a2868</git>
 		<file>DH-Solver.groovy</file>
 	</kinematics>
 <link>
@@ -786,7 +786,7 @@
 		<file>neckCad.groovy</file>
 	</cadEngine>
 	<kinematics>
-		<git>https://gist.github.com/bcb4760a449190206170.git</git>
+		<git>https://gist.github.com/DataManiac18/7e470bb9c7e61038f37090e704c4b0ce</git>
 		<file>DefaultDhSolver.groovy</file>
 	</kinematics>
 <link>
