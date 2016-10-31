@@ -398,12 +398,14 @@
 
 <name>DefaultLeg3</name>
 	<cadEngine>
+		<cadEngine>
 		<git>https://github.com/DataManiac18/laser-cut-robot.git</git>
 		<file>feetCad.groovy</file>
 	</cadEngine>
 	<kinematics>
 		<git>https://gist.github.com/DataManiac18/823851453cc60fbf66c9896fd54a2868</git>
 		<file>DH-Solver.groovy</file>
+	</kinematics>
 	</kinematics>
 <link>
 	<name>basePan</name>

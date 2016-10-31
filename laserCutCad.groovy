@@ -139,21 +139,21 @@ return new ICadGenerator(){
 		
 		double servoTop = servoReference.getMaxZ()
 		CSG horn = Vitamins.get(conf.getShaftType(),conf.getShaftSize())	
-		CSG extraHorn = new Cylinder(20,20,5, (int)3).toCSG();
-		/**
-		CSG extraHorn = (CSG)ScriptingEngine
+		CSG shoulder = new Cube(10,10,20).toCSG();
+		/*
+		CSG extraHorn2 = (CSG)ScriptingEngine
 					 .gitScriptRun(
             "https://github.com/DataManiac18/BowlerStudioConfiguration/blob/master/Covered%20Figurine.groovy", // git location of the library
             "Covered Figurine.groovy" , // file to load
             null// no parameters (see next tutorial)
             );
-            **/
+            */
 
 		
 		servoReference=servoReference
 			.movez(-servoTop)
 
-		
+		CSG rand = servoReference.hull(servoReference)
 		
 		if(linkIndex==0){
 			add(csg,servoReference.clone(),sourceLimb.getRootListener())
@@ -166,7 +166,7 @@ return new ICadGenerator(){
 			}
 			
 		}
-		add(csg,moveDHValues(extraHorn,dh),dh.getListener())
+		add(csg,moveDHValues(shoulder,dh),dh.getListener())
 		add(csg,moveDHValues(horn,dh),dh.getListener())
 
 		if(neck ==sourceLimb ){
