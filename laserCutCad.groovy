@@ -84,13 +84,13 @@ return new ICadGenerator(){
 						.movez(bodyHeight+thickness.getMM())
 						.union(bodyBlob)
 						.hull()
-		//add(bodyParts,bodyExtrude,base.getRootListener())
+		add(bodyParts,bodyExtrude,base.getRootListener())
 		CSG bodyCube = new Cube(	(-bodyExtrude.getMinX()+bodyExtrude.getMaxX())*2,// X dimention
 								 (-bodyExtrude.getMinY()+bodyExtrude.getMaxY())*2,// Y dimention
 								thickness.getMM()//  Z dimention
 							).toCSG()// this converts from the geometry to an object we can work with
 							.movez(bodyHeight-thickness.getMM())// recess the body plate to overlap with the connection interface from the limbs
-		//add(bodyParts,bodyCube,base.getRootListener())					
+		add(bodyParts,bodyCube,base.getRootListener())					
 		
 		CSG bodyPlate=bodyCube	
 					.intersect(bodyExtrude)

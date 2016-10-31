@@ -5,7 +5,7 @@
 		<file>laserCutCad.groovy</file>
 	</cadEngine>
 	<driveEngine>
-		<git>https://gist.github.com/DataManiac18/823851453cc60fbf66c9896fd54a2868</git>
+		<git>https://gist.github.com/375b47a8e071608688a1.git</git>
 		<file>Walking.groovy</file>
 	</driveEngine>
 
@@ -18,7 +18,7 @@
 		<file>feetCad.groovy</file>
 	</cadEngine>
 	<kinematics>
-		<git>https://gist.github.com/DataManiac18/823851453cc60fbf66c9896fd54a2868</git>
+		<git>https://gist.github.com/375b47a8e071608688a1.git</git>
 		<file>DH-Solver.groovy</file>
 	</kinematics>
 <link>
@@ -210,7 +210,7 @@
 		<file>feetCad.groovy</file>
 	</cadEngine>
 	<kinematics>
-		<git>https://gist.github.com/DataManiac18/823851453cc60fbf66c9896fd54a2868</git>
+		<git>https://gist.github.com/375b47a8e071608688a1.git</git>
 		<file>DH-Solver.groovy</file>
 	</kinematics>
 <link>
@@ -403,7 +403,7 @@
 		<file>feetCad.groovy</file>
 	</cadEngine>
 	<kinematics>
-		<git>https://gist.github.com/DataManiac18/823851453cc60fbf66c9896fd54a2868</git>
+		<git>https://gist.github.com/375b47a8e071608688a1.git</git>
 		<file>DH-Solver.groovy</file>
 	</kinematics>
 	</kinematics>
@@ -596,7 +596,7 @@
 		<file>feetCad.groovy</file>
 	</cadEngine>
 	<kinematics>
-		<git>https://gist.github.com/DataManiac18/823851453cc60fbf66c9896fd54a2868</git>
+		<git>https://gist.github.com/375b47a8e071608688a1.git</git>
 		<file>DH-Solver.groovy</file>
 	</kinematics>
 <link>
@@ -788,7 +788,7 @@
 		<file>neckCad.groovy</file>
 	</cadEngine>
 	<kinematics>
-		<git>https://gist.github.com/DataManiac18/7e470bb9c7e61038f37090e704c4b0ce</git>
+		<git>https://gist.github.com/bcb4760a449190206170.git</git>
 		<file>DefaultDhSolver.groovy</file>
 	</kinematics>
 <link>
