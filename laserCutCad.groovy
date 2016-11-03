@@ -139,15 +139,7 @@ return new ICadGenerator(){
 		
 		double servoTop = servoReference.getMaxZ()
 		CSG horn = Vitamins.get(conf.getShaftType(),conf.getShaftSize())	
-		CSG shoulder = new Cube(10,10,20).toCSG();
-		/*
-		CSG extraHorn2 = (CSG)ScriptingEngine
-					 .gitScriptRun(
-            "https://github.com/DataManiac18/BowlerStudioConfiguration/blob/master/Covered%20Figurine.groovy", // git location of the library
-            "Covered Figurine.groovy" , // file to load
-            null// no parameters (see next tutorial)
-            );
-            */
+		CSG shoulder = new Cube(10,dh.getR(),20).toCSG();
 
 		
 		servoReference=servoReference
