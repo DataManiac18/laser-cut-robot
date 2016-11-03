@@ -47,18 +47,16 @@ class Feet implements ICadGenerator, IParameterChanged{
 		.transformed(new Transform().rotZ(90))
 		
 		double servoTop = servoReference.getMaxZ()
-		CSG horn = Vitamins.get(conf.getShaftType(),conf.getShaftSize())	
-		CSG tempHorn = horn.hull()
-		//If you want you can add things here
-		//allCad.add(myCSG);
+		CSG horn = Vitamins.get(conf.getShaftType(),conf.getShaftSize()).hull()
+		//CSG tempHorn = horn.hull()
 		if(linkIndex ==dhLinks.size()-1){
 			println "Found foot limb" 
-			CSG foot =new Cylinder(10,10,thickness.getMM(),(int)3).toCSG() // a one line Cylinder
+			CSG foot =new Cylinder(15,15,thickness.getMM(),(int)3).toCSG() // a one line Cylinder
 			CSG shoulder = new Cube(20,dh.getR(),5).toCSG()
 											.movey(dh.getR()/2)
 			
 			shoulder = defaultCadGen.moveDHValues(shoulder,dh)
-			shoulder = shoulder.difference(tempHorn)
+			shoulder = shoulder.difference(horn.movex(-dh.getR()))
 			defaultCadGen.add(allCad,foot,dh.getListener())
 			defaultCadGen.add(allCad,shoulder,dh.getListener())
 			
@@ -68,8 +66,7 @@ class Feet implements ICadGenerator, IParameterChanged{
 	@Override 
 	public ArrayList<CSG> generateBody(MobileBase b ) {
 		ArrayList<CSG> allCad=defaultCadGen.generateBody(b);
-		//If you want you can add things here
-		//allCad.add(myCSG);
+		
 		return allCad;
 	}
 	/**
