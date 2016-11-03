@@ -83,7 +83,7 @@ return new ICadGenerator(){
 		CSG bodyExtrude = bodyBlob
 						.movez(bodyHeight+thickness.getMM())
 						.union(bodyBlob)
-						.hull()
+						//.hull()
 		add(bodyParts,bodyExtrude,base.getRootListener())
 		CSG bodyCube = new Cube(	(-bodyExtrude.getMinX()+bodyExtrude.getMaxX())*2,// X dimention
 								 (-bodyExtrude.getMinY()+bodyExtrude.getMaxY())*2,// Y dimention

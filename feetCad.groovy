@@ -52,7 +52,7 @@ class Feet implements ICadGenerator, IParameterChanged{
 		if(linkIndex ==dhLinks.size()-1){
 			println "Found foot limb" 
 			CSG foot =new Cylinder(15,15,thickness.getMM(),(int)3).toCSG() // a one line Cylinder
-			CSG shoulder = new Cube(50,dh.getR(),5).toCSG()
+			CSG shoulder = new Cube(50,dh.getR(),3).toCSG()
 											.movey(dh.getR()/2)
 			
 			shoulder = defaultCadGen.moveDHValues(shoulder,dh)
@@ -60,6 +60,14 @@ class Feet implements ICadGenerator, IParameterChanged{
 			defaultCadGen.add(allCad,foot,dh.getListener())
 			defaultCadGen.add(allCad,shoulder,dh.getListener())
 			
+		}
+		else
+		{
+			CSG connector = new Cube(50,dh.getR(),5).toCSG()
+											.movey(dh.getR()/2)
+			connector = defaultCadGen.moveDHValues(connector,dh)
+			connector = connector.difference(horn.movex(-dh.getR()))
+			defaultCadGen.add(allCad,connector,dh.getListener())
 		}
 	
 		return allCad;
