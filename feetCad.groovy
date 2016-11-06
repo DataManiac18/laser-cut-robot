@@ -40,7 +40,7 @@ class Feet implements ICadGenerator, IParameterChanged{
 		LinkConfiguration conf = d.getLinkConfiguration(linkIndex);
 		DHLink dh = dhLinks.get(linkIndex)
 		HashMap<String, Object> shaftmap = Vitamins.getConfiguration(conf.getShaftType(),conf.getShaftSize())
-		double hornOffset = 	shaftmap.get("hornThickness")	
+		double hornOffset = shaftmap.get("hornThickness")	
 		
 		// creating the servo
 		CSG servoReference=   Vitamins.get(conf.getElectroMechanicalType(),conf.getElectroMechanicalSize())
@@ -48,11 +48,12 @@ class Feet implements ICadGenerator, IParameterChanged{
 		
 		double servoTop = servoReference.getMaxZ()
 		CSG horn = Vitamins.get(conf.getShaftType(),conf.getShaftSize()).hull()
-		
+		//the if statements below create the different leg links depending on their position
 		if(linkIndex ==dhLinks.size()-1){
 			println "Found foot limb" 
-			CSG foot =new Cylinder(15,15,thickness.getMM(),(int)3).toCSG() // a one line Cylinder
-			CSG shoulder = new Cube(50,dh.getR(),3).toCSG()
+			CSG foot =new Cylinder(15,15,thickness.getMM(),(int)hornOffset).toCSG()
+															   .movez(-hornOffset/2)
+			CSG shoulder = new Cube(50,dh.getR(),hornOffset).toCSG()
 											.movey(dh.getR()/2)
 			
 			shoulder = defaultCadGen.moveDHValues(shoulder,dh)
@@ -61,12 +62,20 @@ class Feet implements ICadGenerator, IParameterChanged{
 			defaultCadGen.add(allCad,shoulder,dh.getListener())
 			
 		}
-		else
-		{
-			CSG connector = new Cube(50,dh.getR(),5).toCSG()
+		else if(linkIndex == 0){
+			CSG connector = new Cube(dh.getR(),50,hornOffset).toCSG()
 											.movey(dh.getR()/2)
 			connector = defaultCadGen.moveDHValues(connector,dh)
 			connector = connector.difference(horn.movex(-dh.getR()))
+			//defaultCadGen.add(allCad,connector,dh.getListener())
+		}
+		else
+		{
+			CSG connector = new Cube(50,dh.getR(),hornOffset).toCSG()
+											.movey(dh.getR()/2)
+			connector = defaultCadGen.moveDHValues(connector,dh)
+			connector = connector.difference(horn.movex(-dh.getR()))
+			connector = connector.difference(horn)
 			defaultCadGen.add(allCad,connector,dh.getListener())
 		}
 	
