@@ -22,8 +22,8 @@ class Feet implements ICadGenerator, IParameterChanged{
 	LengthParameter leyeDiam 		= new LengthParameter("Left Eye Diameter",35,[headDiameter.getMM()/2,29])
 	LengthParameter reyeDiam 		= new LengthParameter("Right Eye Diameter",35,[headDiameter.getMM()/2,29])
 	LengthParameter eyeCenter 		= new LengthParameter("Eye Center Distance",headDiameter.getMM()/2,[headDiameter.getMM(),headDiameter.getMM()/2])
-	StringParameter servoSizeParam 			= new StringParameter("hobbyServo Default","towerProMG91",Vitamins.listVitaminSizes("hobbyServo"))
-	StringParameter boltSizeParam 			= new StringParameter("Bolt Size","M3",Vitamins.listVitaminSizes("capScrew"))
+	StringParameter servoSizeParam 	= new StringParameter("hobbyServo Default","towerProMG91",Vitamins.listVitaminSizes("hobbyServo"))
+	StringParameter boltSizeParam 	= new StringParameter("Bolt Size","M3",Vitamins.listVitaminSizes("capScrew"))
 
 	HashMap<String, Object>  boltMeasurments = Vitamins.getConfiguration( "capScrew",boltSizeParam.getStrValue())
 	HashMap<String, Object>  nutMeasurments = Vitamins.getConfiguration( "nut",boltSizeParam.getStrValue())
@@ -100,5 +100,14 @@ class Feet implements ICadGenerator, IParameterChanged{
 		headParts=null
 	}
 };
-//DogLegShoulder.theUnionNoConnector()
+
+
+CSG dogLegShoulder = (CSG)ScriptingEngine
+ 					 .gitScriptRun(
+             "https://gist.github.com/6a7ebd3799e086e9b1912c5e7d73125f.git", // git location of the library
+             "DogLegShoulder.groovy" , // file to load
+             null// no parameters (see next tutorial)
+             );
+             
 return new Feet()
+//return dogLegShoulder
