@@ -8,7 +8,7 @@ import com.neuronrobotics.bowlerstudio.threed.BowlerStudio3dEngine;
 
 
 class Feet implements ICadGenerator, IParameterChanged{
-	//First we load teh default cad generator script 
+	//First we load the default cad generator script 
 	ICadGenerator defaultCadGen=(ICadGenerator) ScriptingEngine
 	                    .gitScriptRun(
                                 "https://github.com/DataManiac18/laser-cut-robot.git", // git location of the library
