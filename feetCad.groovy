@@ -48,7 +48,10 @@ class Feet implements ICadGenerator, IParameterChanged{
 		
 		double servoTop = servoReference.getMaxZ()
 		CSG horn = Vitamins.get(conf.getShaftType(),conf.getShaftSize()).hull()
+
+		
 		//the if statements below create the different leg links depending on their position
+
 		if(linkIndex ==dhLinks.size()-1){
 			println "Found foot limb" 
 			CSG foot =new Cylinder(15,15,thickness.getMM(),(int)hornOffset).toCSG()
@@ -68,6 +71,18 @@ class Feet implements ICadGenerator, IParameterChanged{
 			connector = defaultCadGen.moveDHValues(connector,dh)
 			connector = connector.difference(horn.movex(-dh.getR()))
 			//defaultCadGen.add(allCad,connector,dh.getListener())
+
+			//test
+			//calling the DogLegShoulder piece
+		def remoteLegPiece = ScriptingEngine.gitScriptRun(
+            "https://gist.github.com/6a7ebd3799e086e9b1912c5e7d73125f.git", // git location of the library
+            "DogLegShoulder.groovy" , // file to load
+            null
+            );
+            CSG dogLeg = remoteLegPiece.createShoulder(servoReference)
+            .movey(dh.getR()/2)
+            dogleg = defaultCadGen.moveDHValues(dogLeg,dh)
+            //defaultCadGen.add(allCad,dogLeg,dh.getListener())
 		}
 		else
 		{
@@ -79,7 +94,7 @@ class Feet implements ICadGenerator, IParameterChanged{
 			defaultCadGen.add(allCad,connector,dh.getListener())
 		}
 	
-		return allCad;
+		return allCad
 	}
 	@Override 
 	public ArrayList<CSG> generateBody(MobileBase b ) {
@@ -100,14 +115,5 @@ class Feet implements ICadGenerator, IParameterChanged{
 		headParts=null
 	}
 };
-
-
-CSG dogLegShoulder = (CSG)ScriptingEngine
- 					 .gitScriptRun(
-             "https://gist.github.com/6a7ebd3799e086e9b1912c5e7d73125f.git", // git location of the library
-             "DogLegShoulder.groovy" , // file to load
-             null// no parameters (see next tutorial)
-             );
-             
+       
 return new Feet()
-//return dogLegShoulder
