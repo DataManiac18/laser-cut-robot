@@ -73,15 +73,6 @@ class Feet implements ICadGenerator, IParameterChanged{
 			//defaultCadGen.add(allCad,connector,dh.getListener())
 
 			//test
-			//calling the DogLegShoulder piece
-		def remoteLegPiece = ScriptingEngine.gitScriptRun(
-            "https://gist.github.com/6a7ebd3799e086e9b1912c5e7d73125f.git", // git location of the library
-            "DogLegShoulder.groovy" , // file to load
-            null
-            );
-            
-            
-            defaultCadGen.add(allCad,defaultCadGen.moveDHValues(remoteLegPiece.createShoulder(servoReference).movey(0),dh),dh.getListener())
 		}
 		else
 		{
@@ -90,7 +81,18 @@ class Feet implements ICadGenerator, IParameterChanged{
 			connector = defaultCadGen.moveDHValues(connector,dh)
 			connector = connector.difference(horn.movex(-dh.getR()))
 			connector = connector.difference(horn)
-			defaultCadGen.add(allCad,connector,dh.getListener())
+			//defaultCadGen.add(allCad,connector,dh.getListener())
+
+				//calling the DogLegShoulder piece
+		def remoteLegPiece = ScriptingEngine.gitScriptRun(
+            "https://gist.github.com/6a7ebd3799e086e9b1912c5e7d73125f.git", // git location of the library
+            "DogLegShoulder.groovy" , // file to load
+            null
+            );
+            
+            
+            defaultCadGen.add(allCad,defaultCadGen.moveDHValues(remoteLegPiece.createShoulder(servoReference.rotz(90)).rotx(180),dh),dh.getListener())
+		
 		}
 	
 		return allCad
