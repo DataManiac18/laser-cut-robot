@@ -79,10 +79,9 @@ class Feet implements ICadGenerator, IParameterChanged{
             "DogLegShoulder.groovy" , // file to load
             null
             );
-            CSG dogLeg = remoteLegPiece.createShoulder(servoReference)
-            .movey(dh.getR()/2)
-            dogleg = defaultCadGen.moveDHValues(dogLeg,dh)
-            //defaultCadGen.add(allCad,dogLeg,dh.getListener())
+            
+            
+            defaultCadGen.add(allCad,defaultCadGen.moveDHValues(remoteLegPiece.createShoulder(servoReference).movey(0),dh),dh.getListener())
 		}
 		else
 		{
