@@ -84,14 +84,15 @@ class Feet implements ICadGenerator, IParameterChanged{
 			//defaultCadGen.add(allCad,connector,dh.getListener())
 
 				//calling the DogLegShoulder piece
+				
 		def remoteLegPiece = ScriptingEngine.gitScriptRun(
             "https://gist.github.com/6a7ebd3799e086e9b1912c5e7d73125f.git", // git location of the library
             "DogLegShoulder.groovy" , // file to load
             null
             );
+            CSG shoulder = remoteLegPiece.createShoulder(servoReference.rotz(90),8,8).rotx(180)
             
-            
-            defaultCadGen.add(allCad,defaultCadGen.moveDHValues(remoteLegPiece.createShoulder(servoReference.rotz(90)).rotx(180),dh),dh.getListener())
+            defaultCadGen.add(allCad,defaultCadGen.moveDHValues(shoulder,dh),dh.getListener())
 		
 		}
 	
