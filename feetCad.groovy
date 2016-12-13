@@ -8,7 +8,7 @@ import com.neuronrobotics.bowlerstudio.threed.BowlerStudio3dEngine;
 
 
 class Feet implements ICadGenerator, IParameterChanged{
-	//First we load the default cad generator script 
+	//First we load teh default cad generator script 
 	ICadGenerator defaultCadGen=(ICadGenerator) ScriptingEngine
 	                    .gitScriptRun(
                                 "https://github.com/DataManiac18/laser-cut-robot.git", // git location of the library
@@ -22,8 +22,8 @@ class Feet implements ICadGenerator, IParameterChanged{
 	LengthParameter leyeDiam 		= new LengthParameter("Left Eye Diameter",35,[headDiameter.getMM()/2,29])
 	LengthParameter reyeDiam 		= new LengthParameter("Right Eye Diameter",35,[headDiameter.getMM()/2,29])
 	LengthParameter eyeCenter 		= new LengthParameter("Eye Center Distance",headDiameter.getMM()/2,[headDiameter.getMM(),headDiameter.getMM()/2])
-	StringParameter servoSizeParam 	= new StringParameter("hobbyServo Default","towerProMG91",Vitamins.listVitaminSizes("hobbyServo"))
-	StringParameter boltSizeParam 	= new StringParameter("Bolt Size","M3",Vitamins.listVitaminSizes("capScrew"))
+	StringParameter servoSizeParam 			= new StringParameter("hobbyServo Default","towerProMG91",Vitamins.listVitaminSizes("hobbyServo"))
+	StringParameter boltSizeParam 			= new StringParameter("Bolt Size","M3",Vitamins.listVitaminSizes("capScrew"))
 
 	HashMap<String, Object>  boltMeasurments = Vitamins.getConfiguration( "capScrew",boltSizeParam.getStrValue())
 	HashMap<String, Object>  nutMeasurments = Vitamins.getConfiguration( "nut",boltSizeParam.getStrValue())
@@ -48,10 +48,7 @@ class Feet implements ICadGenerator, IParameterChanged{
 		
 		double servoTop = servoReference.getMaxZ()
 		CSG horn = Vitamins.get(conf.getShaftType(),conf.getShaftSize()).hull()
-
-		
 		//the if statements below create the different leg links depending on their position
-
 		if(linkIndex ==dhLinks.size()-1){
 			println "Found foot limb" 
 			CSG foot =new Cylinder(15,15,thickness.getMM(),(int)hornOffset).toCSG()
@@ -70,9 +67,7 @@ class Feet implements ICadGenerator, IParameterChanged{
 											.movey(dh.getR()/2)
 			connector = defaultCadGen.moveDHValues(connector,dh)
 			connector = connector.difference(horn.movex(-dh.getR()))
-			//defaultCadGen.add(allCad,connector,dh.getListener())
-
-			//test
+			defaultCadGen.add(allCad,connector,dh.getListener())
 		}
 		else
 		{
@@ -81,22 +76,10 @@ class Feet implements ICadGenerator, IParameterChanged{
 			connector = defaultCadGen.moveDHValues(connector,dh)
 			connector = connector.difference(horn.movex(-dh.getR()))
 			connector = connector.difference(horn)
-			//defaultCadGen.add(allCad,connector,dh.getListener())
-
-				//calling the DogLegShoulder piece
-				
-		def remoteLegPiece = ScriptingEngine.gitScriptRun(
-            "https://gist.github.com/6a7ebd3799e086e9b1912c5e7d73125f.git", // git location of the library
-            "DogLegShoulder.groovy" , // file to load
-            null
-            );
-            CSG shoulder = remoteLegPiece.createShoulder(servoReference.rotz(90),8,8).rotx(180)
-            
-            defaultCadGen.add(allCad,defaultCadGen.moveDHValues(shoulder,dh),dh.getListener())
-		
+			defaultCadGen.add(allCad,connector,dh.getListener())
 		}
 	
-		return allCad
+		return allCad;
 	}
 	@Override 
 	public ArrayList<CSG> generateBody(MobileBase b ) {
@@ -117,5 +100,5 @@ class Feet implements ICadGenerator, IParameterChanged{
 		headParts=null
 	}
 };
-       
-return new Feet()
+
+return new Feet()//Your code here
